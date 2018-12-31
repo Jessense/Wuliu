@@ -5,7 +5,7 @@ public class Delivery {
  	private String username;
 	private String password;
 	private List<Transportation> transportations;
- 	private MatrixNDG roadmap; //如果考虑交通工具的种类，则一种交通工具对应一个roadmap
+ 	private MatrixNDG roadmap; //先只考虑type=0的交通工具的路线图；如果考虑其他交通工具，则一种交通工具对应一个roadmap
 	
 	public Delivery(String username, String password, List<Transportation> transportations, MatrixNDG roadmap) {
 		

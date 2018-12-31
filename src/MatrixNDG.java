@@ -50,9 +50,12 @@ public class MatrixNDG {
      *     prev -- 前驱顶点数组。即，prev[i]的值是"顶点vs"到"顶点i"的最短路径所经历的全部顶点中，位于"顶点i"之前的那个顶点。
      *     dist -- 长度数组。即，dist[i]是"顶点vs"到"顶点i"的最短路径的长度。
      */
-    public int dijkstra(char start, char destination, int[] prev, int[] dist) {
+    public int dijkstra(char start, char destination) {
         int vs = getPosition(start);
         int vt = getPosition(destination);
+        
+        int[] prev;
+        int[] dist;
     	
     	// flag[i]=true表示"顶点vs"到"顶点i"的最短路径已成功获取
         boolean[] flag = new boolean[vertexs.length];

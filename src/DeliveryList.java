@@ -11,6 +11,24 @@ public class DeliveryList {
 	public List<Solution> makeSolution(Request request) {
 		List<Solution> result = new ArrayList<Solution>();
 		//TODO 给出解决方案列表
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getRoadmap().hasRoad(request.getStart(), request.getDestination())) {
+				int seller_id = request.getSeller_id();
+				int delivery_id = list.get(i).getId();
+				Transportation transportation = list.get(i).getTransportations().get(0);//TODO
+				int transportation_id = transportation.getId();
+				int min_distance = list.get(i).getRoadmap().dijkstra(request.getStart(), request.getDestination());
+				int speed = min_distance/transportation.getSpeed();
+				int type = 0;//TODO
+				int weight = request.getWeight();
+				int price = weight * transportation.getCharge();
+				char start = request.getStart();
+				char destination = request.getDestination();
+				
+				Solution tempSolution = new Solution(seller_id, delivery_id, transportation_id, speed, type, weight, price,start, destination);
+				result.add(tempSolution);
+			}
+		}
 		return result;
 	}
 	

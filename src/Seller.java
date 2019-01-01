@@ -26,16 +26,27 @@ public class Seller {
 		
 	}
 	
-	public void makeRequest(DeliveryList list, Request request) {
+	public void makeRequest(DeliveryList list, int type, int weight, char start, char destination) {
+		Request newrequest = new Request(this.id, type, weight, start, destination);
 		List<Solution> solutions = new ArrayList<Solution>();
-		solutions = list.makeSolution(request);
+		solutions = list.makeSolution(newrequest);
 		Order order = selectSolution(solutions);
 		list.makeOrder(order);
 	}
 	
 	public Order selectSolution(List<Solution> solutions) {
-		Order order = new Order();
-		//TODO ½øÐÐÑ¡Ôñ
+		int choose = 0;
+		Solution solution = solutions.get(choose);
+		int delivery_id = solution.getDelivery_id();
+		int transportation_type = solution.getTransportation_type();
+		int status = 0;
+		int type = solution.getType();
+		int weight = solution.getWeight();
+		int price = solution.getPrice();
+		char start = solution.getStart();
+		char destination = solution.getDestination();
+		Order order = new Order(this.id, delivery_id, transportation_type, status, type, weight, price, start, destination);
+		//TODO 进行选择
 		return order;
 	}
 	public int getId() {

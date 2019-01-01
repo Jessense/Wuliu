@@ -1,10 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
-
+ 
 public class Seller {
 	private String username;
 	private String password;
 	private int id;
+	private boolean abundant ;	//	是否大批量
+	private long [] time_start = new long[2];	//大批量计时开始时间，0表示顺丰，1表示中通
+	final long wait = 7200000;	//7200000ms = 7200s = 2小时，短期大批量优惠持续时间
+	private int [] mx = new int[2];		//大批量累积计重
+	
+	private List<Order> yourOrders;	//	对应加上每个订单order的提交时间
 	
 	public Seller(String username, String password) {
 		this.username = username;
@@ -26,10 +32,10 @@ public class Seller {
 		
 	}
 	
-	public void makeRequest(DeliveryList list, int type, int weight, char start, char destination) {
+	public void makeRequest(DeliveryList list, int type, int weight, char start, char destination, boolean urgent, boolean abundant) {
 		Request newrequest = new Request(this.id, type, weight, start, destination);
 		List<Solution> solutions = new ArrayList<Solution>();
-		solutions = list.makeSolution(newrequest);
+		solutions = list.makeSolution(newrequest, urgent, this.time_start, this.mx);
 		Order order = selectSolution(solutions);
 		list.makeOrder(order);
 	}
@@ -45,7 +51,8 @@ public class Seller {
 		int price = solution.getPrice();
 		char start = solution.getStart();
 		char destination = solution.getDestination();
-		Order order = new Order(this.id, delivery_id, transportation_type, status, type, weight, price, start, destination);
+		long generatetime = solution.getGeneratetime();
+		Order order = new Order(this.id, delivery_id, transportation_type, status, type, weight, price, start, destination, generatetime);
 		//TODO 进行选择
 		return order;
 	}
@@ -58,6 +65,9 @@ public class Seller {
 	public String getUsername() {
 		return username;
 	}
+	public boolean geturgent() {
+		return this.urgent;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -67,6 +77,5 @@ public class Seller {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
 
 }

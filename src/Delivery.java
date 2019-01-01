@@ -11,7 +11,7 @@ public class Delivery {
  	private String username;	//legal person name
 	private String password;	
 	private List<Transportation> transportations;
- 	private List<MatrixNDG> roadmap; //先只考虑type=0的交通工具的路线图；如果考虑其他交通工具，则一种交通工具对应一个roadmap
+ 	private List<MatrixNDG> roadmaps; //先只考虑type=0的交通工具的路线图；如果考虑其他交通工具，则一种交通工具对应一个roadmap
  	private int p0;		//	首重计费
  	private int px;		//	续重计费
  	private int mx;		//	首重临界值
@@ -21,9 +21,9 @@ public class Delivery {
 		this.username = username;
 		this.password = password;
 		this.transportations = transportations;
-		this.roadmap.add(roadmap1);
-		this.roadmap.add(roadmap2);
-		this.roadmap.add(roadmap3);
+		this.roadmaps.add(roadmap1);
+		this.roadmaps.add(roadmap2);
+		this.roadmaps.add(roadmap3);
 		this.p0 = p0;
 		this.px = px;
 		this.mx = mx;
@@ -60,8 +60,17 @@ public class Delivery {
 	public List<Transportation> getTransportations() {
 		return transportations;
 	}
+	public int getMx() {
+		return mx;
+	}
+	public int getP0() {
+		return p0;
+	}
+	public int getPx() {
+		return px;
+	}
 	public MatrixNDG getRoadmap(int i) {	//	i表示想要查看的地图编号（车/火车/飞机）
-		return roadmap.get(i);
+		return roadmaps.get(i);
 	}
 	public void setUsername(String username) {
 		this.username = username;
@@ -72,7 +81,19 @@ public class Delivery {
 	public void setTransportations(List<Transportation> transportations) {
 		this.transportations = transportations;
 	}
-	public void setRoadmap(MatrixNDG roadmap, int i) {	//	i表示想要改变的地图编号（车/火车/飞机）
-		this.roadmap.set(i, roadmap);
+	public void setRoadmap(MatrixNDG roadmaps, int i) {	//	i表示想要改变的地图编号（车/火车/飞机）
+		this.roadmaps.set(i, roadmaps);
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setMx(int mx) {
+		this.mx = mx;
+	}
+	public void setP0(int p0) {
+		this.p0 = p0;
+	}
+	public void setPx(int px) {
+		this.px = px;
 	}
 }

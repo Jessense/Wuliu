@@ -1,9 +1,13 @@
+import java.util.Date;
+
 public class Request {
 	private int seller_id;
 	private int type; //货物种类
 	private int weight;
 	private char start;
 	private char destination;
+	private long generatetime;
+	private Date time;
 	
 	public Request(int seller_id, int type, int weight, char start, char destination) {
 		// TODO Auto-generated constructor stub
@@ -12,7 +16,7 @@ public class Request {
 		this.weight = weight;
 		this.start = start;
 		this.destination = destination;
-		
+		this.generatetime = time.getTime();
 	}
 	public int getSeller_id() {
 		return seller_id;
@@ -28,6 +32,9 @@ public class Request {
 	}
 	public char getDestination() {
 		return destination;
+	}
+	public long getGeneratetime() {
+		return generatetime;
 	}
 	public void setSeller_id(int seller_id) {
 		this.seller_id = seller_id;

@@ -35,7 +35,7 @@ public class Seller {
 	public void makeRequest(DeliveryList list, int type, int weight, char start, char destination, boolean urgent, boolean abundant) {
 		Request newrequest = new Request(this.id, type, weight, start, destination);
 		List<Solution> solutions = new ArrayList<Solution>();
-		solutions = list.makeSolution(newrequest, urgent, this.time_start, this.mx);
+		solutions = list.makeSolution(newrequest, urgent, abundant, this.time_start, this.mx);
 		Order order = selectSolution(solutions);
 		list.makeOrder(order);
 	}

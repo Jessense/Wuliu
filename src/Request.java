@@ -1,23 +1,18 @@
 public class Request {
-	private int order_id;
 	private int seller_id;
-	private int type; //»õÎïÖÖÀà
+	private int type; //货物种类
 	private int weight;
 	private char start;
 	private char destination;
 	
-	public Request(int order_id, int seller_id, int type, int weight, char start, char destination) {
+	public Request(int seller_id, int type, int weight, char start, char destination) {
 		// TODO Auto-generated constructor stub
-		this.order_id = order_id;
 		this.seller_id = seller_id;
 		this.type = type;
 		this.weight = weight;
 		this.start = start;
 		this.destination = destination;
 		
-	}
-	public int getOrder_id() {
-		return order_id;
 	}
 	public int getSeller_id() {
 		return seller_id;
@@ -33,9 +28,6 @@ public class Request {
 	}
 	public char getDestination() {
 		return destination;
-	}
-	public void setOrder_id(int order_id) {
-		this.order_id = order_id;
 	}
 	public void setSeller_id(int seller_id) {
 		this.seller_id = seller_id;

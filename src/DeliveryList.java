@@ -8,7 +8,8 @@ public class DeliveryList {
 //		list = new ArrayList<Delivery>();
 	}
 	
-	public List<Solution> makeSolution(Request request) {
+	public List<Solution> makeSolution(Request request, boolean urgent, boolean abundant, long[] time_start, int[] mx) {
+		//	time_start 记录了该seller分别在两个供应商处大批量优惠的开始时间，mx记录了分别在两个供应商处大批量优惠的累积计重
 		List<Solution> result = new ArrayList<Solution>();
 		//TODO 给出解决方案列表
 		for (int i = 0; i < list.size(); i++) {

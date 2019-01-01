@@ -7,11 +7,19 @@ public class Seller {
 	private int id;
 	
 	public Seller(String username, String password) {
-		
+		this.username = username;
+		this.password = password;
 	}
 	
-	public void login() {
-		
+	public boolean login(SellerList L, String username, String password) {
+		Seller value;
+		for (int i = 0; i < L.getList().size(); i++) {
+			value = L.getList().get(i);
+			if(value.getUsername() == username && value.getPassword() == password) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void register() {
@@ -27,7 +35,7 @@ public class Seller {
 	
 	public Order selectSolution(List<Solution> solutions) {
 		Order order = new Order();
-		//TODO ½øĞĞÑ¡Ôñ
+		//TODO Â½Ã¸ÃÃÃ‘Â¡Ã”Ã±
 		return order;
 	}
 	public int getId() {

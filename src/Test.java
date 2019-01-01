@@ -58,7 +58,13 @@ public class Test {
 		int chargeZT3 = 100;
 		int chargeSF1 = 6; 
 		int chargeSF2 = 10;
-		int chargeSF3 = 120;		
+		int chargeSF3 = 120;
+		int p0SF = 3; //SF首重
+		int pxSF = 5; //SF续重
+		int mxSF = 2; //SF首重界限
+		int p0ZT = 2;
+		int pxZT = 4;
+		int mxZT = 2;
 		
 		List<Transportation> transZT = new ArrayList<Transportation>();
 		List<Transportation> transSF = new ArrayList<Transportation>();
@@ -89,8 +95,8 @@ public class Test {
 		String SFpw = "SF123";
 		String ZTpw = "ZT123";
 		List<Delivery> dl = new ArrayList<Delivery>();
-		dl.add(new Delivery(SF, SFpw, transSF, roadmapSF1, roadmapSF2, roadmapSF3));
-		dl.add(new Delivery(ZT, ZTpw, transZT, roadmapZT1, roadmapZT2, roadmapZT3));
+		dl.add(new Delivery(SF, SFpw, transSF, roadmapSF1, roadmapSF2, roadmapSF3, p0SF, pxSF, mxSF));
+		dl.add(new Delivery(ZT, ZTpw, transZT, roadmapZT1, roadmapZT2, roadmapZT3, p0ZT, pxZT, mxZT));
 		DeliveryList deliverylist = new DeliveryList(dl);
 	}
 	

@@ -1,4 +1,3 @@
-
 public class Order {
 	private int order_id;
 	private int seller_id;
@@ -10,8 +9,9 @@ public class Order {
 	private int price;
 	private char start;
 	private char destination;
+	private long generatetime;	//	订单提交时间
 	
-	public Order(int seller_id, int delivery_id, int transportation_type, int status, int type, int weight, int price, char start, char destination) {
+	public Order(int seller_id, int delivery_id, int transportation_type, int status, int type, int weight, int price, char start, char destination, long generatetime) {
 		// TODO Auto-generated constructor stub
 		this.order_id = /*something*/;
 		this.seller_id = seller_id;
@@ -22,7 +22,8 @@ public class Order {
 		this.weight = weight;
 		this.price = price;
 		this.start = start;
-		this.destination =destination;
+		this.destination = destination;
+		this.generatetime = generatetime;
 	}
 	
 	public int getDelivery_id() {
@@ -54,6 +55,9 @@ public class Order {
 	}
 	public char getDestination() {
 		return destination;
+	}
+	public long getGeneratetime() {
+		return generatetime;
 	}
 	public void setDelivery_id(int delivery_id) {
 		this.delivery_id = delivery_id;

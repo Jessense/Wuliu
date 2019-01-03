@@ -51,7 +51,7 @@ public class DeliveryList {
 					Order tempOrder = list.get(i).getOrders().get(k);
 					if (tempOrder.getSeller_id() == request.getSeller_id() && tempOrder.getFlag() != -1) {
 						if (tempOrder.getFlag() == 0) {
-							if ((new Date()).getTime() - tempOrder.getTime_start() < list.get(i).getDuration()) {
+							if ((new Date()).getTime() - tempOrder.getGeneratetime() < list.get(i).getDuration()) {
 								int accum = 0;
 								for (int m = k; m < list.get(i).getOrders().size(); m ++) {
 									Order tempOrder2 = list.get(i).getOrders().get(m);

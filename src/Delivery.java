@@ -15,6 +15,14 @@ public class Delivery {
  	private int p0;		//	首重计费
  	private int px;		//	续重计费
  	private int mx;		//	首重临界值
+	
+	private List<Order> orders; //该供应商的订单列表
+ 	private int urgent_price; //加急价格因子
+ 	private int urgent_speed; //加急速度因子
+ 	private int discount; //大批量折扣
+ 	private int enough; //大批量优惠需达到的累计重量
+	private int duration; //大批量优惠时间窗口
+
  	
  	
 	public Delivery(String username, String password, List<Transportation> transportations, MatrixNDG roadmap1, MatrixNDG roadmap2, MatrixNDG roadmap3, int p0, int px, int mx) {
@@ -72,6 +80,25 @@ public class Delivery {
 	public MatrixNDG getRoadmap(int i) {	//	i表示想要查看的地图编号（车/火车/飞机）
 		return roadmaps.get(i);
 	}
+	public int getUrgent_price() {
+		return urgent_price;
+	}
+	public int getUrgent_speed() {
+		return urgent_speed;
+	}
+	public int getDiscount() {
+		return discount;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+	public List<Order> getOrders() {
+		return orders;
+	}
+	public int getEnough() {
+		return enough;
+	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -96,4 +123,22 @@ public class Delivery {
 	public void setPx(int px) {
 		this.px = px;
 	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	public void setUrgent_price(int urgent_price) {
+		this.urgent_price = urgent_price;
+	}
+	public void setUrgent_speed(int urgent_speed) {
+		this.urgent_speed = urgent_speed;
+	}
+	public void setEnough(int enough) {
+		this.enough = enough;
+	}	
 }

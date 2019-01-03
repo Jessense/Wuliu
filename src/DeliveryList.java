@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class DeliveryList {
 	private List<Delivery> list;
@@ -8,8 +9,7 @@ public class DeliveryList {
 //		list = new ArrayList<Delivery>();
 	}
 	
-	public List<Solution> makeSolution(Request request, boolean urgent, boolean abundant, long[] time_start, int[] mx) {
-		//	time_start 记录了该seller分别在两个供应商处大批量优惠的开始时间，mx记录了分别在两个供应商处大批量优惠的累积计重
+	public List<Solution> makeSolution(Request request) {
 		List<Solution> result = new ArrayList<Solution>();
 		//TODO 给出解决方案列表
 		for (int i = 0; i < list.size(); i++) {
@@ -39,13 +39,52 @@ public class DeliveryList {
 					price = list.get(i).getMx() * charge * list.get(i).getP0() + (weight - list.get(i).getMx()) * charge * list.get(i).getPX(); 
 				}
 				
+				/*简单粗暴的加急策略，直接乘了个因子，不知道后续如何加急运输*/
+				if (request.getUrgent()) {
+					price *= list.get(i).getUrgent_price();
+					speed *= list.get(i).getUrgent_speed();
+				}
+				
+
+				/*粗暴的短期大批量优惠策略，复杂度为该供应商的订单数量的平方，可通过将已完成订单移出该订单列表来优化*/
+				for (int k = 0; k < list.get(i).getOrders().size(); k ++) {
+					Order tempOrder = list.get(i).getOrders().get(k);
+					if (tempOrder.getSeller_id() == request.getSeller_id() && tempOrder.getFlag() != -1) {
+						if (tempOrder.getFlag() == 0) {
+							if ((new Date()).getTime() - tempOrder.getTime_start() < list.get(i).getDuration()) {
+								int accum = 0;
+								for (int m = k; m < list.get(i).getOrders().size(); m ++) {
+									Order tempOrder2 = list.get(i).getOrders().get(m);
+									if (tempOrder2.getSeller_id() == request.getSeller_id() && tempOrder2.getFlag() == 1) {
+										accum += tempOrder2.getWeight();
+										if (accum > list.get(i).getEnough())
+											break;
+									}
+								}
+								if (accum >= list.get(i).getEnough()) {
+									price *= list.get(i).getDiscount();
+								}
+							} else {
+								for (int m = k; m < list.get(i).getOrders().size(); m ++) {
+									Order tempOrder2 = list.get(i).getOrders().get(m);
+									if (tempOrder2.getSeller_id() == request.getSeller_id() && tempOrder2.getFlag() == 1) {
+										tempOrder.setFlag(-1);
+									}
+								}								
+							}
+						}
+					}
+				}
+				
+				
+				
+				
 				
 				
 				int seller_id = request.getSeller_id();
 				int delivery_id = list.get(i).getId();
 				
 				int type = 0;//TODO
-				
 				
 				char start = request.getStart();
 				char destination = request.getDestination();

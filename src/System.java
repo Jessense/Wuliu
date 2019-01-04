@@ -31,12 +31,30 @@ public class System {
 				}
 				int speed = distances[j]/transpeed; //预计送达时间
 				int transportation_type = j; //路线图对应交通工具种类
-				int weight = request.getWeight();
-				int price; //再乘上距离再除以某个常数？
+				double weight = request.getWeight();
+				double price; //再乘上距离再除以某个常数？
 				if (weight <= list.get(i).getMx()) {
+					int m;
+					for (m = 0; m < list.get(i).getMx(); m++) {
+						if(weight - m < 0)
+							break;
+					}
+					double tempm = weight - m + 1;
+					if (tempm > 0.5)
+						weight = weight - tempm + 1;
+					else 
+						weight = weight - tempm + 0.5;
+					
 					price = weight * charge * list.get(i).getP0();
 				} else {
-					price = list.get(i).getMx() * charge * list.get(i).getP0() + (weight - list.get(i).getMx()) * charge * list.get(i).getPX(); 
+					int m;
+					for (m = list.get(i).getMx(); ; m++) {
+						if(weight - m < 0)
+							break;
+					}
+					if(weight != m - 1)
+						weight = m;
+					price = weight * charge * list.get(i).getP0(); 
 				}
 				
 				/*简单粗暴的加急策略，直接乘了个因子，不知道后续如何加急运输*/

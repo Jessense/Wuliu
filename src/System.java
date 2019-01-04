@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-public class DeliveryList {
+public class System {
 	private List<Delivery> list;
 	
-	public DeliveryList(List<Delivery> list) {
+	public System(List<Delivery> list) {
 //		list = new ArrayList<Delivery>();
 	}
 	

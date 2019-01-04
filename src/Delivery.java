@@ -12,8 +12,7 @@ public class Delivery {
 	private String password;	
 	private List<Transportation> transportations;
  	private List<MatrixNDG> roadmaps; //先只考虑type=0的交通工具的路线图；如果考虑其他交通工具，则一种交通工具对应一个roadmap
- 	private int p0;		//	首重计费
- 	private int px;		//	续重计费
+ 	private int p0;		//	计费per kg
  	private int mx;		//	首重临界值
 	
 	private List<Order> orders; //该供应商的订单列表
@@ -25,7 +24,7 @@ public class Delivery {
 
  	
  	
-	public Delivery(String username, String password, List<Transportation> transportations, MatrixNDG roadmap1, MatrixNDG roadmap2, MatrixNDG roadmap3, int p0, int px, int mx) {
+	public Delivery(String username, String password, List<Transportation> transportations, MatrixNDG roadmap1, MatrixNDG roadmap2, MatrixNDG roadmap3, int p0, int mx) {
 		this.username = username;
 		this.password = password;
 		this.transportations = transportations;
@@ -33,7 +32,6 @@ public class Delivery {
 		this.roadmaps.add(roadmap2);
 		this.roadmaps.add(roadmap3);
 		this.p0 = p0;
-		this.px = px;
 		this.mx = mx;
 	}
 	
@@ -73,9 +71,6 @@ public class Delivery {
 	}
 	public int getP0() {
 		return p0;
-	}
-	public int getPx() {
-		return px;
 	}
 	public MatrixNDG getRoadmap(int i) {	//	i表示想要查看的地图编号（车/火车/飞机）
 		return roadmaps.get(i);
@@ -119,9 +114,6 @@ public class Delivery {
 	}
 	public void setP0(int p0) {
 		this.p0 = p0;
-	}
-	public void setPx(int px) {
-		this.px = px;
 	}
 	public void setDiscount(int discount) {
 		this.discount = discount;

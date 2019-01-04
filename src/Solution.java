@@ -1,6 +1,6 @@
 public class Solution extends Request{	
 	private int delivery_id;
-	private int price;
+	private double price;
 	private int transportation_type;
 	private int speed; //预计运输速度
 	
@@ -14,7 +14,7 @@ public class Solution extends Request{
 	public int gettransportation_type() {
 		return transportation_type;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	public int getDelivery_id() {		
@@ -29,7 +29,7 @@ public class Solution extends Request{
 	public void settransportation_type(int transportation_type) {
 		this.transportation_type = transportation_type;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	

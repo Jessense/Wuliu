@@ -5,7 +5,7 @@ public class Order extends Solution{
 	private int transportation_id;
 	private int status; //订单状态，0: made, 1: transferring, 2: finished
 	private int generatetime;
-	private int delivery_id
+	private int delivery_id;
 	
 	/*计时起点：0；计时起点之后、大批量优惠区间内：1；大批量优惠区间外：-1。
 	 * 卖家确认第一个订单时，设为0；之后确认订单时，若前一个订单flag=-1，则该订单flag设为0，否则flag设为1。

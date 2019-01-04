@@ -3,7 +3,7 @@ public class Solution extends Request{
 	private int transportation_type;
 	private int speed; //预计运输速度
 	
-	public Solution(int seller_id, int delivery_id, int transportation_type, int speed, int type, int weight, int price, char start, char destination) {
+	public Solution(int seller_id, int transportation_type, int speed, int type, int weight, int price, char start, char destination) {
 		// TODO Auto-generated constructor stub
 		super(seller_id, type, weight, start, destination);
 	}

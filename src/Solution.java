@@ -17,6 +17,12 @@ public class Solution extends Request{
 	public int getPrice() {
 		return price;
 	}
+	public int getDelivery_id() {		
+		return delivery_id;			
+	}
+	public void setDelivery_id(int delivery_id) {		
+		this.delivery_id = delivery_id;			
+	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}

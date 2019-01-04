@@ -3,13 +3,13 @@ import java.util.Date;
 public class Request {
 	private int seller_id;
 	private int type; //货物种类
-	private int weight;
+	private double weight;
 	private char start;
 	private char destination;
 	private long generatetime;
 	private Date time;
 	
-	public Request(int seller_id, int type, int weight, char start, char destination) {
+	public Request(int seller_id, int type, double weight, char start, char destination) {
 		// TODO Auto-generated constructor stub
 		this.seller_id = seller_id;
 		this.type = type;
@@ -24,7 +24,7 @@ public class Request {
 	public int getType() {
 		return type;
 	}
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 	public char getStart() {
@@ -42,7 +42,7 @@ public class Request {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public void setWeight(int weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 	public void setStart(char start) {

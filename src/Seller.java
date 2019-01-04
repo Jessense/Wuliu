@@ -5,10 +5,6 @@ public class Seller {
 	private String username;
 	private String password;
 	private int id;
-	private boolean abundant ;	//	是否大批量
-	private long [] time_start = new long[2];	//大批量计时开始时间，0表示顺丰，1表示中通
-	final long wait = 7200000;	//7200000ms = 7200s = 2小时，短期大批量优惠持续时间
-	private int [] mx = new int[2];		//大批量累积计重
 	
 	private List<Order> yourOrders;	//	对应加上每个订单order的提交时间
 	
@@ -64,9 +60,6 @@ public class Seller {
 	}
 	public String getUsername() {
 		return username;
-	}
-	public boolean geturgent() {
-		return this.urgent;
 	}
 	public void setId(int id) {
 		this.id = id;

@@ -24,7 +24,8 @@ public class Delivery {
 
  	
  	
-	public Delivery(String username, String password, List<Transportation> transportations, MatrixNDG roadmap1, MatrixNDG roadmap2, MatrixNDG roadmap3, int p0, int mx) {
+	public Delivery(String username, String password, List<Transportation> transportations, MatrixNDG roadmap1, MatrixNDG roadmap2, 
+			MatrixNDG roadmap3, int p0, int mx) {
 		this.username = username;
 		this.password = password;
 		this.transportations = transportations;

@@ -6,7 +6,7 @@ public class Seller {
 	private String password;
 	private int id;
 	
-	private List<Order> yourOrders;	//	对应加上每个订单order的提交时间
+	private List<Order> yourOrders;	// 对应加上每个订单order的提交时间
 	
 	public Seller(String username, String password) {
 		this.username = username;
@@ -52,10 +52,17 @@ public class Seller {
 		//TODO 进行选择
 		return order;
 	}
-	public char getCurpostion(Order order) {
+	public char getCurpostion(Order order, System system) {
 		char curposition;
-		int index = yourOrders.indexOf(order);
-		curposition = yourOrders.get(index).getCurposition();
+		int delivery_id = order.getDelivery_id();
+		for (int i = 0; i < system.getList().size(); i++) {
+			if(delivery_id == system.getList().get(i).getId()) {
+				int index = system.getList().get(i).getOrders().indexOf(order);
+				curposition = system.getList().get(i).getOrders().get(index).getCurposition();
+				return curposition;
+			}
+		}
+		curposition = ' ';
 		return curposition;
 	}
 	public int getId() {

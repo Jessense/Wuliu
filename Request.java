@@ -6,17 +6,16 @@ public class Request {
 	private double weight;
 	private char start;
 	private char destination;
-	private long generatetime;
-	private Date time;
+	private Boolean urgent;
 	
-	public Request(int seller_id, int type, double weight, char start, char destination) {
+	public Request(int seller_id, int type, double weight, char start, char destination, Boolean urgent) {
 		// TODO Auto-generated constructor stub
 		this.seller_id = seller_id;
 		this.type = type;
 		this.weight = weight;
 		this.start = start;
 		this.destination = destination;
-		this.generatetime = time.getTime();
+		this.urgent = urgent;
 	}
 	public int getSeller_id() {
 		return seller_id;
@@ -33,9 +32,11 @@ public class Request {
 	public char getDestination() {
 		return destination;
 	}
-	public long getGeneratetime() {
-		return generatetime;
+
+	public Boolean getUrgent() {
+		return urgent;
 	}
+
 	public void setSeller_id(int seller_id) {
 		this.seller_id = seller_id;
 	}
@@ -51,5 +52,8 @@ public class Request {
 	public void setDestination(char destination) {
 		this.destination = destination;
 	}
-	
+
+	public void setUrgent(Boolean urgent) {
+		this.urgent = urgent;
+	}
 }

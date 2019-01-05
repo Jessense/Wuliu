@@ -2,16 +2,16 @@ public class Solution extends Request{
 	private int delivery_id;
 	private double price;
 	private int transportation_type;
-	private int speed; //预计运输速度
+	private double speed; //预计运输速度
 	
-	public Solution(int seller_id, int delivery_id, int transportation_type, int speed, int type, double weight, int price, char start, char destination) {
+	public Solution(int seller_id, int delivery_id, int transportation_type, double speed, int type, double weight, double price, char start, char destination, Boolean urgent) {
 		// TODO Auto-generated constructor stub
-		super(seller_id, type, weight, start, destination);
+		super(seller_id, type, weight, start, destination, urgent);
 	}
-	public int getSpeed() {
+	public double getSpeed() {
 		return speed;
 	}
-	public int gettransportation_type() {
+	public int getTransportation_type() {
 		return transportation_type;
 	}
 	public double getPrice() {
@@ -26,7 +26,7 @@ public class Solution extends Request{
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	public void settransportation_type(int transportation_type) {
+	public void setTransportation_type(int transportation_type) {
 		this.transportation_type = transportation_type;
 	}
 	public void setPrice(double price) {

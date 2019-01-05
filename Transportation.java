@@ -2,10 +2,10 @@
 public class Transportation {
 	private int id;
 	private int type;
-	private int MAX_LOAD;
-	private int load;
-	private int speed;
-	private int charge;
+	private double MAX_LOAD;
+	private double load;
+	private double speed;
+	private double charge;
 
 	public Transportation(int type, int max, int speed, int charge, int load) {
 		// TODO Auto-generated constructor stub
@@ -18,39 +18,39 @@ public class Transportation {
 	public void reduceLoad(int load) {
 		this.load -= load;
 	}
-	public int getCharge() {
+	public double getCharge() {
 		return charge;
 	}
 	public int getId() {
 		return id;
 	}
-	public int getLoad() {
+	public double getLoad() {
 		return load;
 	}
-	public int getSpeed() {
+	public double getSpeed() {
 		return speed;
 	}
 	public int getType() {
 		return type;
 	}
-	public void setCharge(int charge) {
+	public void setCharge(double charge) {
 		this.charge = charge;
 	}
-	public boolean addLoad(int load) {
+	public boolean addLoad(double load) {
 		if(this.load + load < MAX_LOAD) {
 			this.load += load;
 			return true;
 		}
 		return false;
 	}
-	public boolean subLoad(int load) {
+	public boolean subLoad(double load) {
 		if(this.load - load > 0) {
 			this.load -= load;
 			return true;
 		}
 		return false;
 	}
-	public void setSpeed(int speed) {
+	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
 

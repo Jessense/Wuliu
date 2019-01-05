@@ -4,7 +4,7 @@ public class Order extends Solution{
 	private int order_id;
 	private int transportation_id;
 	private int status; //订单状态，0: made, 1: transferring, 2: finished
-	private int generatetime;
+	private long generatetime;
 	private char curposition;
 	
 	/*计时起点：0；计时起点之后、大批量优惠区间内：1；大批量优惠区间外：-1。
@@ -16,10 +16,11 @@ public class Order extends Solution{
 	private int flag; 
 	
 	
-	public Order(int seller_id, int delivery_id, int transportation_type, int speed,int transportation_id, int status, int type, int weight, int price, char start, char destination) {
+	public Order(int seller_id, int delivery_id, int transportation_type, double speed, int status, int type, double weight, double price, char start, char destination, Boolean urgent) {
 		// TODO Auto-generated constructor stub
-		super(seller_id, delivery_id, transportation_type, speed, type, weight, price, start, destination);
+		super(seller_id, delivery_id, transportation_type, speed, type, weight, price, start, destination, urgent);
 		curposition = start;
+		generatetime = (new Date()).getTime();
 	}
 	
 	public int getOrder_id() {
@@ -31,7 +32,7 @@ public class Order extends Solution{
 	public int getTransportation_id() {
 		return transportation_id;
 	}
-	public int getGeneratetime() {
+	public long getGeneratetime() {
 		return generatetime;
 	}
 	public int getFlag() {
@@ -49,7 +50,7 @@ public class Order extends Solution{
 	public void setTransportation_id(int transportation_id) {
 		this.transportation_id = transportation_id;
 	}
-	public void setGeneratetime(int generatetime) {
+	public void setGeneratetime(long generatetime) {
 		this.generatetime = generatetime;
 	}
 	public void setFlag(int flag) {

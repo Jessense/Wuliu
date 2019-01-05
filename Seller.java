@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
  
 public class Seller {
 	private String username;
@@ -13,10 +14,10 @@ public class Seller {
 		this.password = password;
 	}
 	
-	public boolean login(SellerList L, String username, String password) {
+	public boolean login(List<Seller> L, String username, String password) {
 		Seller value;
-		for (int i = 0; i < L.getList().size(); i++) {
-			value = L.getList().get(i);
+		for (int i = 0; i < L.size(); i++) {
+			value = L.get(i);
 			if(value.getUsername() == username && value.getPassword() == password) {
 				return true;
 			}
@@ -28,12 +29,12 @@ public class Seller {
 		
 	}
 	
-	public void makeRequest(DeliveryList list, int type, int weight, char start, char destination, boolean urgent, boolean abundant) {
-		Request newrequest = new Request(this.id, type, weight, start, destination);
+	public void makeRequest(Logistics sys, int type, int weight, char start, char destination, boolean urgent) {
+		Request newrequest = new Request(this.id, type, weight, start, destination, urgent);
 		List<Solution> solutions = new ArrayList<Solution>();
-		solutions = list.makeSolution(newrequest, urgent, abundant, this.time_start, this.mx);
+		solutions = sys.makeSolution(newrequest);
 		Order order = selectSolution(solutions);
-		list.makeOrder(order);
+		sys.makeOrder(order);
 	}
 	
 	public Order selectSolution(List<Solution> solutions) {
@@ -41,24 +42,25 @@ public class Seller {
 		Solution solution = solutions.get(choose);
 		int delivery_id = solution.getDelivery_id();
 		int transportation_type = solution.getTransportation_type();
+		double speed = solution.getSpeed();
 		int status = 0;
 		int type = solution.getType();
-		int weight = solution.getWeight();
-		int price = solution.getPrice();
+		double weight = solution.getWeight();
+		double price = solution.getPrice();
 		char start = solution.getStart();
 		char destination = solution.getDestination();
-		long generatetime = solution.getGeneratetime();
-		Order order = new Order(this.id, delivery_id, transportation_type, status, type, weight, price, start, destination, generatetime);
+		Boolean urgent = solution.getUrgent();
+		Order order = new Order(this.id, delivery_id, transportation_type, speed,status, type, weight, price, start, destination, urgent);
 		//TODO 进行选择
 		return order;
 	}
-	public char getCurpostion(Order order, System system) {
+	public char getCurpostion(Order order, Logistics logistics) {
 		char curposition;
 		int delivery_id = order.getDelivery_id();
-		for (int i = 0; i < system.getList().size(); i++) {
-			if(delivery_id == system.getList().get(i).getId()) {
-				int index = system.getList().get(i).getOrders().indexOf(order);
-				curposition = system.getList().get(i).getOrders().get(index).getCurposition();
+		for (int i = 0; i < logistics.getDelivers().size(); i++) {
+			if(delivery_id == logistics.getDelivers().get(i).getId()) {
+				int index = logistics.getDelivers().get(i).getOrders().indexOf(order);
+				curposition = logistics.getDelivers().get(i).getOrders().get(index).getCurposition();
 				return curposition;
 			}
 		}

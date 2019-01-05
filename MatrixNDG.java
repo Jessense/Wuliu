@@ -54,8 +54,8 @@ public class MatrixNDG {
         int vs = getPosition(start);
         int vt = getPosition(destination);
         
-        int[] prev;
-        int[] dist;
+        int[] prev = new int[vertexs.length];
+        int[] dist = new int[vertexs.length];
     	
     	// flag[i]=true表示"顶点vs"到"顶点i"的最短路径已成功获取
         boolean[] flag = new boolean[vertexs.length];

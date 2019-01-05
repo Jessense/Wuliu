@@ -97,7 +97,7 @@ public class Test {
 		List<Delivery> dl = new ArrayList<Delivery>();
 		dl.add(new Delivery(SF, SFpw, transSF, roadmapSF1, roadmapSF2, roadmapSF3, p0SF, pxSF, mxSF));
 		dl.add(new Delivery(ZT, ZTpw, transZT, roadmapZT1, roadmapZT2, roadmapZT3, p0ZT, pxZT, mxZT));
-		DeliveryList deliverylist = new DeliveryList(dl);
+		System system = new System(dl);
 	}
 	
 	while(true){

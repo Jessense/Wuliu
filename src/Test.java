@@ -87,6 +87,24 @@ public class Test {
  	}
 	
 	{
+		//初始化图
+		char[] vexs = {'A', 'B', 'C', 'D', 'E', 'F', 'G','H','I','J','K'};
+       		char[][] edges = new char[][]{
+           		{'A', 'C'}, 
+           		{'A', 'D'}, 
+           		{'A', 'F'}, 
+           		{'B', 'C'}, 
+           		{'C', 'D'}, 
+           		{'E', 'G'}, 
+           		{'D', 'G'},
+           		{'I','J'},
+           		{'J','G'},};
+       		MatrixNDG roadmapSF1 = new new MatrixNDG(vexs, edges);
+		MatrixNDG roadmapSF2 = new new MatrixNDG(vexs, edges);
+		MatrixNDG roadmapSF3 = new new MatrixNDG(vexs, edges);
+		MatrixNDG roadmapZT1 = new new MatrixNDG(vexs, edges);
+		MatrixNDG roadmapZT2 = new new MatrixNDG(vexs, edges);
+		MatrixNDG roadmapZT3 = new new MatrixNDG(vexs, edges);
 	}
 	
 	{
@@ -95,8 +113,8 @@ public class Test {
 		String SFpw = "SF123";
 		String ZTpw = "ZT123";
 		List<Delivery> dl = new ArrayList<Delivery>();
-		dl.add(new Delivery(SF, SFpw, transSF, roadmapSF1, roadmapSF2, roadmapSF3, p0SF, pxSF, mxSF));
-		dl.add(new Delivery(ZT, ZTpw, transZT, roadmapZT1, roadmapZT2, roadmapZT3, p0ZT, pxZT, mxZT));
+		dl.add(new Delivery(SF, SFpw, transSF, roadmapSF1, roadmapSF2, roadmapSF3, p0SF, mxSF));
+		dl.add(new Delivery(ZT, ZTpw, transZT, roadmapZT1, roadmapZT2, roadmapZT3, p0ZT, mxZT));
 		System system = new System(dl);
 	}
 	

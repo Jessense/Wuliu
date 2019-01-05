@@ -52,6 +52,12 @@ public class Seller {
 		//TODO 进行选择
 		return order;
 	}
+	public char getCurpostion(Order order) {
+		char curposition;
+		int index = yourOrders.indexOf(order);
+		curposition = yourOrders.get(index).getCurposition();
+		return curposition;
+	}
 	public int getId() {
 		return id;
 	}

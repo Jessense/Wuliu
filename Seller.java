@@ -7,7 +7,7 @@ public class Seller {
 	private String password;
 	private int id;
 	
-	private List<Order> yourOrders;	// å¯¹åº”åŠ ä¸Šæ¯ä¸ªè®¢å•orderçš„æäº¤æ—¶é—´
+	private List<Order> yourOrders;	// ¶ÔÓ¦¼ÓÉÏÃ¿¸ö¶©µ¥orderµÄÌá½»Ê±¼ä
 	
 	public Seller(String username, String password) {
 		this.username = username;
@@ -29,10 +29,22 @@ public class Seller {
 		
 	}
 	
-	public void makeRequest(Logistics sys, int type, int weight, char start, char destination, boolean urgent) {
+	public void makeRequest(Logistics sys, int type, double weight, char start, char destination, boolean urgent) {
 		Request newrequest = new Request(this.id, type, weight, start, destination, urgent);
 		List<Solution> solutions = new ArrayList<Solution>();
 		solutions = sys.makeSolution(newrequest);
+		System.out.println("---------------------------------------");
+		System.out.println(solutions.size());
+		for (Solution solution: solutions) {
+			System.out.println("---------------");
+			System.out.println(solution.getStart());
+			System.out.println(solution.getDestination());
+			System.out.println(solution.getSeller_id());
+			System.out.println(solution.getDelivery_id());
+			System.out.println(solution.getTransportation_type());
+			System.out.println(solution.getPrice());
+			System.out.println(solution.getSpeed());
+		}
 		Order order = selectSolution(solutions);
 		sys.makeOrder(order);
 	}
@@ -51,7 +63,7 @@ public class Seller {
 		char destination = solution.getDestination();
 		Boolean urgent = solution.getUrgent();
 		Order order = new Order(this.id, delivery_id, transportation_type, speed,status, type, weight, price, start, destination, urgent);
-		//TODO è¿›è¡Œé€‰æ‹©
+		//TODO ½øĞĞÑ¡Ôñ
 		return order;
 	}
 	public char getCurpostion(Order order, Logistics logistics) {

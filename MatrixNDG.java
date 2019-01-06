@@ -5,7 +5,7 @@ public class MatrixNDG {
     private int[][] matrix;//图关系矩阵
     private static final int INF = Integer.MAX_VALUE;
 
-    public MatrixNDG(char[] vertexs,char[][] edges){
+    public MatrixNDG(char[] vertexs,int[][] edges){
         size=vertexs.length;
         matrix=new int[size][size];//设定图关系矩阵大小
         this.vertexs=vertexs;
@@ -14,11 +14,13 @@ public class MatrixNDG {
 				matrix[i][j] = INF;
 		}
         
-        for(char[] c:edges){//设置矩阵值
-            int p1 = getPosition(c[0]);//根据顶点名称确定对应矩阵下标
-            int p2 = getPosition(c[1]);
-            matrix[p1][p2] = edges[p1][p2];//无向图，在两个对称位置存储
-            matrix[p2][p1] = edges[p1][p2];
+        for(int[] c:edges){//设置矩阵值
+//            int p1 = getPosition(c[0]);//根据顶点名称确定对应矩阵下标
+//            int p2 = getPosition(c[1]);
+//            System.out.println(c[0] + ":" + Integer.toString(p1));
+//            System.out.println(c[1] + ":" + Integer.toString(p2));
+            matrix[c[0]][c[1]] = c[2];//无向图，在两个对称位置存储
+            matrix[c[1]][c[0]] = c[2];
         }
 
     }

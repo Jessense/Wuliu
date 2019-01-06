@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class Request {
 	private int seller_id;
-	private int type; //璐х墿绉嶇被
+	private int type; //货物种类
 	private double weight;
 	private char start;
 	private char destination;

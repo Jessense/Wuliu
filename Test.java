@@ -58,9 +58,9 @@ public class Test {
 		int chargeSF1 = 6;
 		int chargeSF2 = 10;
 		int chargeSF3 = 120;
-		int p0SF = 3; //SFé¦–é‡
-		int pxSF = 5; //SFç»­é‡
-		int mxSF = 2; //SFé¦–é‡ç•Œé™
+		int p0SF = 3; //SFÊ×ÖØ
+		int pxSF = 5; //SFĞøÖØ
+		int mxSF = 2; //SFÊ×ÖØ½çÏŞ
 		int p0ZT = 2;
 		int pxZT = 4;
 		int mxZT = 2;
@@ -84,18 +84,18 @@ public class Test {
 
 		/*********************************************************/
 
-		//åˆå§‹åŒ–å›¾
+		//³õÊ¼»¯Í¼
 		char[] vexs = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'};
-		char[][] edges = new char[][]{
-				{'A', 'C'},
-				{'A', 'D'},
-				{'A', 'F'},
-				{'B', 'C'},
-				{'C', 'D'},
-				{'E', 'G'},
-				{'D', 'G'},
-				{'I', 'J'},
-				{'J', 'G'},};
+		int[][] edges = new int[][]{
+				{0, 1, 3},
+				{0, 3, 2},
+				{0, 5, 4},
+				{1, 2, 5},
+				{2, 3, 1},
+				{4, 6, 4},
+				{3, 6, 5},
+				{8, 9, 7},
+				{9, 6, 8}, };
 		MatrixNDG roadmapSF1 = new MatrixNDG(vexs, edges);
 		MatrixNDG roadmapSF2 = new MatrixNDG(vexs, edges);
 		MatrixNDG roadmapSF3 = new MatrixNDG(vexs, edges);
@@ -116,15 +116,21 @@ public class Test {
 
 		/*********************************************************/
 
-		while (true) {
-			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) ç’ãˆ å´Ÿ
+		for(int i = 0; i < 10; i++)
+		{
+			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) è®¢å•
 			//public Request(int order_id, int seller_id, int type, int weight)
 			final double d = Math.random();
-			final int i = (int) (d * 1000);
-			Thread.sleep(i);
+			final int du = (int) (d * 1000);
+//			Thread.sleep(du);
+			try {
+				Thread.sleep(du);
+			} catch(InterruptedException e) {
+				System.out.println("got interrupted!");
+			}
 			final double dd = Math.random();
 			final int ii = (int) (dd * 5);
-			sellerList[ii].
+			slist.get(ii).makeRequest(system, 0, dd*10, 'A', 'B', false);
 		}
 
 	}

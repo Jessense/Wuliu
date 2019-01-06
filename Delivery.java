@@ -11,16 +11,16 @@ public class Delivery {
  	private String username;	//legal person name
 	private String password;	
 	private List<Transportation> transportations;
- 	private List<MatrixNDG> roadmaps; //å…ˆåªè€ƒè™‘type=0çš„äº¤é€šå·¥å…·çš„è·¯çº¿å›¾ï¼›å¦‚æœè€ƒè™‘å…¶ä»–äº¤é€šå·¥å…·ï¼Œåˆ™ä¸€ç§äº¤é€šå·¥å…·å¯¹åº”ä¸€ä¸ªroadmap
- 	private double p0;		//	è®¡è´¹per kg
- 	private double mx;		//	é¦–é‡ä¸´ç•Œå€¼
+ 	private List<MatrixNDG> roadmaps; //ÏÈÖ»¿¼ÂÇtype=0µÄ½»Í¨¹¤¾ßµÄÂ·ÏßÍ¼£»Èç¹û¿¼ÂÇÆäËû½»Í¨¹¤¾ß£¬ÔòÒ»ÖÖ½»Í¨¹¤¾ß¶ÔÓ¦Ò»¸öroadmap
+ 	private double p0;		//	¼Æ·Ñper kg
+ 	private double mx;		//	Ê×ÖØÁÙ½çÖµ
 	
-	private List<Order> orders; //è¯¥ä¾›åº”å•†çš„è®¢å•åˆ—è¡¨
- 	private double urgent_price; //åŠ æ€¥ä»·æ ¼å› å­
- 	private double urgent_speed; //åŠ æ€¥é€Ÿåº¦å› å­
- 	private double discount; //å¤§æ‰¹é‡æŠ˜æ‰£
- 	private double enough; //å¤§æ‰¹é‡ä¼˜æƒ éœ€è¾¾åˆ°çš„ç´¯è®¡é‡é‡
-	private double duration; //å¤§æ‰¹é‡ä¼˜æƒ æ—¶é—´çª—å£
+	private List<Order> orders; //¸Ã¹©Ó¦ÉÌµÄ¶©µ¥ÁĞ±í
+ 	private double urgent_price; //¼Ó¼±¼Û¸ñÒò×Ó
+ 	private double urgent_speed; //¼Ó¼±ËÙ¶ÈÒò×Ó
+ 	private double discount; //´óÅúÁ¿ÕÛ¿Û
+ 	private double enough; //´óÅúÁ¿ÓÅ»İĞè´ïµ½µÄÀÛ¼ÆÖØÁ¿
+	private double duration; //´óÅúÁ¿ÓÅ»İÊ±¼ä´°¿Ú
 
  	
  	
@@ -29,11 +29,13 @@ public class Delivery {
 		this.username = username;
 		this.password = password;
 		this.transportations = transportations;
+		this.roadmaps = new ArrayList<MatrixNDG>();
 		this.roadmaps.add(roadmap1);
 		this.roadmaps.add(roadmap2);
 		this.roadmaps.add(roadmap3);
 		this.p0 = p0;
 		this.mx = mx;
+		this.orders = new ArrayList<Order>();
 	}
 	
 	public boolean login(List<Delivery> L, String username, String password) {
@@ -78,7 +80,7 @@ public class Delivery {
 		return roadmaps;
 	}
 
-	public MatrixNDG getRoadmap(int i) {	//	iè¡¨ç¤ºæƒ³è¦æŸ¥çœ‹çš„åœ°å›¾ç¼–å·ï¼ˆè½¦/ç«è½¦/é£æœºï¼‰
+	public MatrixNDG getRoadmap(int i) {	//	i±íÊ¾ÏëÒª²é¿´µÄµØÍ¼±àºÅ£¨³µ/»ğ³µ/·É»ú£©
 		return roadmaps.get(i);
 	}
 	public double getUrgent_price() {
@@ -114,7 +116,7 @@ public class Delivery {
 		this.roadmaps = roadmaps;
 	}
 
-	public void setRoadmap(MatrixNDG roadmaps, int i) {	//	iè¡¨ç¤ºæƒ³è¦æ”¹å˜çš„åœ°å›¾ç¼–å·ï¼ˆè½¦/ç«è½¦/é£æœºï¼‰
+	public void setRoadmap(MatrixNDG roadmaps, int i) {	//	i±íÊ¾ÏëÒª¸Ä±äµÄµØÍ¼±àºÅ£¨³µ/»ğ³µ/·É»ú£©
 		this.roadmaps.set(i, roadmaps);
 	}
 	public void setId(int id) {

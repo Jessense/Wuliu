@@ -37,9 +37,9 @@ public class Test {
 		/*********************************************************/
 
 		//public Transportation(int type, int load, int speed, int charge)
-		int truck = 1;
-		int train = 2;
-		int plane = 3;
+		int truck = 0;
+		int train = 1;
+		int plane = 2;
 		int loadZT1 = 5000;
 		int loadZT2 = 100000;
 		int loadZT3 = 15000;
@@ -58,12 +58,10 @@ public class Test {
 		int chargeSF1 = 6;
 		int chargeSF2 = 10;
 		int chargeSF3 = 120;
-		int p0SF = 3; //SFÊ×ÖØ
-		int pxSF = 5; //SFĞøÖØ
-		int mxSF = 2; //SFÊ×ÖØ½çÏŞ
-		int p0ZT = 2;
-		int pxZT = 4;
-		int mxZT = 2;
+		int p0SF = 2; //SFé¦–é‡æ¯å…¬æ–¤è®¡ä»·
+		int mxSF = 50; //SFé¦–é‡ç•Œé™
+		int p0ZT = 3;
+		int mxZT = 40;
 
 		List<Transportation> transZT = new ArrayList<Transportation>();
 		List<Transportation> transSF = new ArrayList<Transportation>();
@@ -84,7 +82,7 @@ public class Test {
 
 		/*********************************************************/
 
-		//³õÊ¼»¯Í¼
+		//åˆå§‹åŒ–å›¾
 		char[] vexs = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'};
 		int[][] edges = new int[][]{
 				{0, 1, 3},
@@ -116,10 +114,10 @@ public class Test {
 
 		/*********************************************************/
 
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < 1; i++)
 		{
-			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) è®¢å•
-			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) ç’ãˆ å´?
+			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) ç’ãˆ å´Ÿ
+			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) é ä½µå¹å®•?
 			//public Request(int order_id, int seller_id, int type, int weight)
 			final double d = Math.random();
 			final int du = (int) (d * 1000);
@@ -131,8 +129,8 @@ public class Test {
 			}
 			final double dd = Math.random();
 			final int ii = (int) (dd * 5);
-			slist.get(ii).makeRequest(system, 0, dd*10, 'A', 'B', false);
-			slist.get(ii).makeRequest(system, 0, dd*10, 'A', 'B', false);
+			slist.get(ii).makeRequest(system, 0, 20.2, 'A', 'B', false);
+			slist.get(ii).makeRequest(system, 0, 50.2, 'A', 'B', false);
 		}
 		
 	}

@@ -125,7 +125,7 @@ public class Test {
 			Thread.sleep(i);
 			final double dd = Math.random();
 			final int ii = (int) (dd * 5);
-			sellerList[ii].makeRequest(sys, 0, dd*10, 'A', 'B", 0);
+			sList[ii].makeRequest(sys, 0, dd*10, 'A', 'B", 0);
 		}
 		
 	}

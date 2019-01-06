@@ -116,7 +116,8 @@ public class Test {
 
 		/*********************************************************/
 
-		while (true) {
+		for(int i = 0; i < 10; i++)
+		{
 			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) 璁㈠崟
 			//public Request(int order_id, int seller_id, int type, int weight)
 			final double d = Math.random();
@@ -124,8 +125,8 @@ public class Test {
 			Thread.sleep(i);
 			final double dd = Math.random();
 			final int ii = (int) (dd * 5);
-			sellerList[ii].
+			sellerList[ii].makeRequest(sys, 0, dd*10, 'A', 'B", 0);
 		}
-
+		
 	}
 }

@@ -119,6 +119,7 @@ public class Test {
 		for(int i = 0; i < 10; i++)
 		{
 			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) 订单
+			//public Order(int seller_id, int delivery_id, int transportation_id, int status, int type, int weight, int price) 璁㈠�?
 			//public Request(int order_id, int seller_id, int type, int weight)
 			final double d = Math.random();
 			final int du = (int) (d * 1000);
@@ -131,7 +132,8 @@ public class Test {
 			final double dd = Math.random();
 			final int ii = (int) (dd * 5);
 			slist.get(ii).makeRequest(system, 0, dd*10, 'A', 'B', false);
+			slist.get(ii).makeRequest(system, 0, dd*10, 'A', 'B', false);
 		}
-
+		
 	}
 }

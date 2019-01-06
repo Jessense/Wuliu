@@ -14,28 +14,30 @@ public class Logistics {
 
     public List<Solution> makeSolution(Request request) {
         List<Solution> result = new ArrayList<Solution>();
-        //TODO ¸ø³ö½â¾ö·½°¸ÁÐ±í
+        //TODO ç»™å‡ºè§£å†³æ–¹æ¡ˆåˆ—è¡¨
         for (int i = 0; i < delivers.size(); i++) {
             List<MatrixNDG> roadmaps = delivers.get(i).getRoadmaps();
             int[] distances = new int[roadmaps.size()];
             for (int j = 0; j < roadmaps.size(); j++) {
+
                 distances[j] = roadmaps.get(i).dijkstra(request.getStart(), request.getDestination());
                 double transpeed = 0;
                 double charge = 0;
-                if (roadmaps.get(i).getSize() == 1) //Èç¹û¸Ã¹©Ó¦ÉÌÃ»ÓÐ¸ÃÀàÐÍ½»Í¨¹¤¾ß
+                if (roadmaps.get(j).getSize() == 1) //å¦‚æžœè¯¥ä¾›åº”å•†æ²¡æœ‰è¯¥ç±»åž‹äº¤é€šå·¥å…·
                     break;
                 else {
                     for (int k = 0; k < delivers.get(i).getTransportations().size(); k ++) {
-                        if (delivers.get(i).getTransportations().get(i).getType() == j) {
-                            transpeed = delivers.get(i).getTransportations().get(i).getSpeed();
-                            charge = delivers.get(i).getTransportations().get(i).getCharge();
+                        if (delivers.get(i).getTransportations().get(k).getType() == j) {
+                            transpeed = delivers.get(i).getTransportations().get(k).getSpeed();
+                            charge = delivers.get(i).getTransportations().get(k).getCharge();
+                            break;
                         }
                     }
                 }
-                double speed = distances[j]/transpeed; //Ô¤¼ÆËÍ´ïÊ±¼ä
-                int transportation_type = j; //Â·ÏßÍ¼¶ÔÓ¦½»Í¨¹¤¾ßÖÖÀà
+                double speed = distances[j]/transpeed; //é¢„è®¡é€è¾¾æ—¶é—´
+                int transportation_type = j; //è·¯çº¿å›¾å¯¹åº”äº¤é€šå·¥å…·ç§ç±»
                 double weight = request.getWeight();
-                double price; //ÔÙ³ËÉÏ¾àÀëÔÙ³ýÒÔÄ³¸ö³£Êý£¿
+                double price; //å†ä¹˜ä¸Šè·ç¦»å†é™¤ä»¥æŸä¸ªå¸¸æ•°ï¼Ÿ
                 if (weight <= delivers.get(i).getMx()) {
                     int m;
                     for (m = 0; m < delivers.get(i).getMx(); m++) {
@@ -60,14 +62,14 @@ public class Logistics {
                     price = weight * charge * delivers.get(i).getP0();
                 }
 
-                /*¼òµ¥´Ö±©µÄ¼Ó¼±²ßÂÔ£¬Ö±½Ó³ËÁË¸öÒò×Ó£¬²»ÖªµÀºóÐøÈçºÎ¼Ó¼±ÔËÊä*/
+                /*ç®€å•ç²—æš´çš„åŠ æ€¥ç­–ç•¥ï¼Œç›´æŽ¥ä¹˜äº†ä¸ªå› å­ï¼Œä¸çŸ¥é“åŽç»­å¦‚ä½•åŠ æ€¥è¿è¾“*/
                 if (request.getUrgent()) {
                     price *= delivers.get(i).getUrgent_price();
                     speed *= delivers.get(i).getUrgent_speed();
                 }
 
 
-                /*´Ö±©µÄ¶ÌÆÚ´óÅúÁ¿ÓÅ»Ý²ßÂÔ£¬¸´ÔÓ¶ÈÎª¸Ã¹©Ó¦ÉÌµÄ¶©µ¥ÊýÁ¿µÄÆ½·½£¬¿ÉÍ¨¹ý½«ÒÑÍê³É¶©µ¥ÒÆ³ö¸Ã¶©µ¥ÁÐ±íÀ´ÓÅ»¯*/
+                /*ç²—æš´çš„çŸ­æœŸå¤§æ‰¹é‡ä¼˜æƒ ç­–ç•¥ï¼Œå¤æ‚åº¦ä¸ºè¯¥ä¾›åº”å•†çš„è®¢å•æ•°é‡çš„å¹³æ–¹ï¼Œå¯é€šè¿‡å°†å·²å®Œæˆè®¢å•ç§»å‡ºè¯¥è®¢å•åˆ—è¡¨æ¥ä¼˜åŒ–*/
                 for (int k = 0; k < delivers.get(i).getOrders().size(); k ++) {
                     Order tempOrder = delivers.get(i).getOrders().get(k);
                     if (tempOrder.getSeller_id() == request.getSeller_id() && tempOrder.getFlag() != -1) {
@@ -120,7 +122,7 @@ public class Logistics {
 
 
     public void makeOrder(Order order) {
-        //½«¶©µ¥¶ÔÓ¦µÄÎïÁ÷¹©Ó¦ÉÌµÄÔËÁ¦½øÐÐÏàÓ¦µÄ¼õÉÙ
+        //å°†è®¢å•å¯¹åº”çš„ç‰©æµä¾›åº”å•†çš„è¿åŠ›è¿›è¡Œç›¸åº”çš„å‡å°‘
         for (int i = 0; i < delivers.size(); i ++) {
             if (order.getDelivery_id() == delivers.get(i).getId()) {
                 for (int j = 0; j < delivers.get(i).getTransportations().size(); j ++) {

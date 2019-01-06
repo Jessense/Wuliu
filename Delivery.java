@@ -11,16 +11,16 @@ public class Delivery {
  	private String username;	//legal person name
 	private String password;	
 	private List<Transportation> transportations;
- 	private List<MatrixNDG> roadmaps; //ÏÈÖ»¿¼ÂÇtype=0µÄ½»Í¨¹¤¾ßµÄÂ·ÏßÍ¼£»Èç¹û¿¼ÂÇÆäËû½»Í¨¹¤¾ß£¬ÔòÒ»ÖÖ½»Í¨¹¤¾ß¶ÔÓ¦Ò»¸öroadmap
- 	private double p0;		//	¼Æ·Ñper kg
- 	private double mx;		//	Ê×ÖØÁÙ½çÖµ
+ 	private List<MatrixNDG> roadmaps;
+ 	private double p0;
+ 	private double mx;
 	
-	private List<Order> orders; //¸Ã¹©Ó¦ÉÌµÄ¶©µ¥ÁĞ±í
- 	private double urgent_price; //¼Ó¼±¼Û¸ñÒò×Ó
- 	private double urgent_speed; //¼Ó¼±ËÙ¶ÈÒò×Ó
- 	private double discount; //´óÅúÁ¿ÕÛ¿Û
- 	private double enough; //´óÅúÁ¿ÓÅ»İĞè´ïµ½µÄÀÛ¼ÆÖØÁ¿
-	private double duration; //´óÅúÁ¿ÓÅ»İÊ±¼ä´°¿Ú
+	private List<Order> orders;
+ 	private double urgent_price;
+ 	private double urgent_speed;
+ 	private double discount;
+ 	private double enough;
+	private double duration;
 
  	
  	
@@ -49,12 +49,12 @@ public class Delivery {
 		return false;
 	}
 	
-	public bool register(String legalname, String ID, Delivery delivery) {
-        //appcodeæŸ¥çœ‹åœ°å€ https://market.console.aliyun.com/imageconsole/
-		String appcode = "å‡è£…æœ‰appcode";
+	public Boolean register(String legalname, String ID, Delivery delivery) {
+        //appcode²é¿´µØÖ· https://market.console.aliyun.com/imageconsole/
+		String appcode = "¼Ù×°ÓĞappcode";
 		String url="http://1.api.apistore.cn/idcard";
-		String realName = "æ— åæ°";
-		String cardNo = "360103198907277757";//çè¾“çš„èº«ä»½è¯å·ç  
+		String realName = "ÎŞÃûÊÏ";
+		String cardNo = "360103198907277757";//Ï¹ÊäµÄÉí·İÖ¤ºÅÂë 
 		String param="realName="+realName+"&cardNo="+cardNo;
 
 
@@ -93,7 +93,7 @@ public class Delivery {
 		return roadmaps;
 	}
 
-	public MatrixNDG getRoadmap(int i) {	//	i±íÊ¾ÏëÒª²é¿´µÄµØÍ¼±àºÅ£¨³µ/»ğ³µ/·É»ú£©
+	public MatrixNDG getRoadmap(int i) {	
 		return roadmaps.get(i);
 	}
 	public double getUrgent_price() {
@@ -129,7 +129,7 @@ public class Delivery {
 		this.roadmaps = roadmaps;
 	}
 
-	public void setRoadmap(MatrixNDG roadmaps, int i) {	//	i±íÊ¾ÏëÒª¸Ä±äµÄµØÍ¼±àºÅ£¨³µ/»ğ³µ/·É»ú£©
+	public void setRoadmap(MatrixNDG roadmaps, int i) {	//	i??????????????????/??/?????
 		this.roadmaps.set(i, roadmaps);
 	}
 	public void setId(int id) {

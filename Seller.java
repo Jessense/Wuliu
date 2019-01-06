@@ -29,7 +29,7 @@ public class Seller {
 		
 	}
 	
-	public void makeRequest(Logistics sys, int type, int weight, char start, char destination, boolean urgent) {
+	public void makeRequest(Logistics sys, int type, double weight, char start, char destination, boolean urgent) {
 		Request newrequest = new Request(this.id, type, weight, start, destination, urgent);
 		List<Solution> solutions = new ArrayList<Solution>();
 		solutions = sys.makeSolution(newrequest);

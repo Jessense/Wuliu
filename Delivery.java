@@ -47,9 +47,22 @@ public class Delivery {
 		return false;
 	}
 	
-	public void register() {
-		
+	public bool register(String legalname, String ID, Delivery delivery) {
+        //appcode查看地址 https://market.console.aliyun.com/imageconsole/
+		String appcode = "假装有appcode";
+		String url="http://1.api.apistore.cn/idcard";
+		String realName = "无名氏";
+		String cardNo = "360103198907277757";//瞎输的身份证号码 
+		String param="realName="+realName+"&cardNo="+cardNo;
+
+
+		String returnStr=aliyun.requestGet(url, param, appcode);
+		System.out.println(returnStr);
+		if(returnStr.substring(14, 15) == "0")
+			return true;
+		return false;
 	}
+	
 	
 	public void doOrder(Order order) {
 		//TODO
